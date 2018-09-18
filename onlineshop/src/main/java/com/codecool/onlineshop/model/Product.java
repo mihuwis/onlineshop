@@ -2,6 +2,7 @@ package com.codecool.onlineshop.model;
 
 import java.util.List;
 import java.util.ArrayList;
+import com.codecool.onlineshop.controlers.IDGenerator;
 
 public class Product {
 
@@ -10,6 +11,7 @@ public class Product {
     private Float defaultPrice;
     private ProductCategory productCategory;
     private Integer ID;
+    private IDGenerator idGenerator = new IDGenerator();
 
     public Product(){}
 
@@ -22,8 +24,7 @@ public class Product {
     }
 
     private Integer generateID() {
-        UUID uuid = UUID.randomUUID();
-        return (Integer)uuid.toString();
+        return idGenerator.generateID();
     }
 
     public ArrayList<Product> getAllProducts() {

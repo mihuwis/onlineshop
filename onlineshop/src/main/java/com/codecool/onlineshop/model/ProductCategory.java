@@ -1,20 +1,18 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.controlers.IDGenerator;
+
 public class ProductCategory {
     
     String name;
     Integer ID;
+    IDGenerator idGenerator = new IDGenerator();
     
     public ProductCategory() {}
 
     public ProductCategory(String name) {
         this.name = name;
-        this.ID = generateID();
-    }
-
-    Integer generateID() {
-        UUID uuid = UUID.randomUUID();
-        return (Integer)uuid.toString();
+        this.ID = idGenerator.generateID();
     }
 
     public String getCategoryName() {

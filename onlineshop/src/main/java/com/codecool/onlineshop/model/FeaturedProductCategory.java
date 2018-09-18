@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.model;
 
 import java.util.Date;
+import com.codecool.onlineshop.controlers.IDGenerator;
 
 public class FeaturedProductCategory extends ProductCategory {
     
@@ -8,11 +9,11 @@ public class FeaturedProductCategory extends ProductCategory {
 
     public FeaturedProductCategory(String name, Date expirationDate) {
         super.name = name;
-        super.ID = super.generateID();
+        super.ID = super.idGenerator.generateId();
     }
 
     public Date getExpirationDate() {
-        return getExpirationDate();
+        return expirationDate;
     }
 
 }

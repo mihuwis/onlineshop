@@ -1,4 +1,4 @@
-package com.codecool.onlineshop.controlers;
+package main.java.com.codecool.onlineshop.controlers;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,9 +18,10 @@ public class IDGenerator {
             randomID = ThreadLocalRandom.current().nextInt(min, max + 1);
             if (!idPool.contains(randomID)) {
                 idPool.add(randomID);
-                return randomID;
                 generatingID = false;
+                return randomID;
             }
         }
+        return -1;
     }
 }
