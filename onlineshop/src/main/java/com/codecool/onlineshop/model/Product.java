@@ -46,6 +46,10 @@ public class Product {
         return ID;
     }
 
+    public Float getProductPrice() {
+        return defaultPrice;
+    }
+
     public Integer getProductCategoryId() {
         return productCategory.getID();
     }

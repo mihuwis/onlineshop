@@ -15,5 +15,4 @@ public class FeaturedProductCategory extends ProductCategory {
     public Date getExpirationDate() {
         return expirationDate;
     }
-
 }
