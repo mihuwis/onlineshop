@@ -6,14 +6,15 @@ import com.codecool.onlineshop.controlers.IDGenerator;
 
 public class Product {
 
-    private static List<Product> productList = new ArrayList<>();
+    private static List<Product> productList = new ArrayList<Product>();
     private String name;
     private Float defaultPrice;
     private ProductCategory productCategory;
     private Integer ID;
     private IDGenerator idGenerator = new IDGenerator();
 
-    public Product(){}
+    public Product() {
+    }
 
     public Product(String name, Float defaultPrice, ProductCategory productCategory) {
         this.name = name;
@@ -24,10 +25,9 @@ public class Product {
     }
 
     private Integer generateID() {
-        try{
-        return idGenerator.generateID();
-        }
-        catch(Exception e){
+        try {
+            return idGenerator.generateID();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
