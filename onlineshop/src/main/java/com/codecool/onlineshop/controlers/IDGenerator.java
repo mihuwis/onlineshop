@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class IDGenerator {
+public class IDGenerator{
 
     private List<Integer> idPool = new ArrayList<>();
 
-    public Integer generateID() {
+    public Integer generateID() throws Exception {
         boolean generatingID = true;
         Integer randomID;
         int min = 1000;
@@ -22,6 +22,6 @@ public class IDGenerator {
                 return randomID;
             }
         }
-        return -1;
+        throw new Exception();
     }
 }
