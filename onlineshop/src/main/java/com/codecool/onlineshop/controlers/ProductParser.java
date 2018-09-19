@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.controlers;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,9 +26,20 @@ public class ProductParser{
 
     }
 
-    public void loadProducts(){
+    // public void loadProducts(){
+    //     try {
+    //         File productFile = new File("src/main/resources/file.xml");
+    //         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+    //         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+    //         Document doc = docBuilder.parse(productFile);
 
-    }
+    //         doc.getDocumentElement().normalize();
+
+
+    //     } catch (Exception err) {
+    //         err.printStackTrace();
+    //     }
+    // }
 
     public void addProduct(Product product){
 
@@ -45,9 +57,9 @@ public class ProductParser{
             Element products = doc.createElement("Products");
             onelineShop.appendChild(products);
 
-            Attr category = doc.createAttribute("Category");
-            category.setValue("Drugs");
-            products.setAttributeNode(category);
+            // Attr category = doc.createAttribute("Category");
+            // category.setValue("Drugs");
+            // products.setAttributeNode(category);
 
             Element product = doc.createElement("Product");
             products.appendChild(product);
@@ -63,6 +75,10 @@ public class ProductParser{
             Element price = doc.createElement("Price");
             price.appendChild(doc.createTextNode("150,00"));
             product.appendChild(price);
+
+            Element category = doc.createElement("Category");
+            category.appendChild(doc.createTextNode("Drugs"));
+            product.appendChild(category);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
             Transformer transformer = tFactory.newTransformer();
