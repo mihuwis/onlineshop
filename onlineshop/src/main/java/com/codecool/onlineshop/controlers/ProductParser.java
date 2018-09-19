@@ -1,7 +1,6 @@
 package com.codecool.onlineshop.controlers;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +17,8 @@ import com.codecool.onlineshop.model.Product;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class ProductParser{
     String fileName;
@@ -26,20 +27,42 @@ public class ProductParser{
 
     }
 
-    // public void loadProducts(){
-    //     try {
-    //         File productFile = new File("src/main/resources/file.xml");
-    //         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-    //         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-    //         Document doc = docBuilder.parse(productFile);
+    public void loadProducts(){
+        try {
+            File productFile = new File("src/main/resources/file.xml");
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(productFile);
 
-    //         doc.getDocumentElement().normalize();
+            doc.getDocumentElement().normalize();
+
+            String shopElement = doc.getDocumentElement().getNodeName();
+
+            NodeList productsList = doc.getElementsByTagName("Products");
+            NodeList productList = doc.getElementsByTagName("Product");
+
+            for(int i = 0; i < productList.getLength(); i++){
+                Node nNode = productList.item(i);
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE){
+                    Element eElement = (Element) nNode;
+
+                    String id = eElement.getAttribute("ID");
+                    String productName = eElement.getElementsByTagName("Name").item(0).getTextContent();
+                    String price = eElement.getElementsByTagName("Price").item(0).getTextContent();
+                    String category = eElement.getElementsByTagName("Category").item(0).getTextContent();
+
+                    System.out.println(id + productName + price + category);
+                }
 
 
-    //     } catch (Exception err) {
-    //         err.printStackTrace();
-    //     }
-    // }
+
+            }
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
 
     public void addProduct(Product product){
 
@@ -56,10 +79,6 @@ public class ProductParser{
 
             Element products = doc.createElement("Products");
             onelineShop.appendChild(products);
-
-            // Attr category = doc.createAttribute("Category");
-            // category.setValue("Drugs");
-            // products.setAttributeNode(category);
 
             Element product = doc.createElement("Product");
             products.appendChild(product);
