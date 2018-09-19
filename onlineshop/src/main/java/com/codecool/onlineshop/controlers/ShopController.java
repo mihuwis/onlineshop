@@ -26,11 +26,11 @@ public class ShopController{
     }
 
     public void saveProductsTo(String fileName){
-        parser.serializeProductsToFile();
+        parser.serializeProductToFile();
     }
 
     public void showTableOfProducts(){
-        view.showTableOfProducts();
+        view.printProductsTable();
     }
 
     public void  newOrder(){
