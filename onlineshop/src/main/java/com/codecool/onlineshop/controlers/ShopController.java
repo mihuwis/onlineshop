@@ -11,7 +11,7 @@ public class ShopController{
     private ProductParser parser;
     private View view;
 
-    public ShopController(){
+    public ShopController(String fileName){
         product = new ProductController();
         basket = new BasketController();
         parser = new ProductParser(fileName);

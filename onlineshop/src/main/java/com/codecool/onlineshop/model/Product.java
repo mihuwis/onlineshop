@@ -24,15 +24,21 @@ public class Product {
     }
 
     private Integer generateID() {
+        try{
         return idGenerator.generateID();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
-    public ArrayList<Product> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productList;
     }
 
-    public ArrayList<Product> getAllProductsBy(ProductCategory productCategory) {
-        List<Product> productsOfCategory = new ArrayList<>();
+    public List<Product> getAllProductsBy(ProductCategory productCategory) {
+        List<Product> productsOfCategory = new ArrayList<Product>();
 
         for (Product product : productList) {
             if (isProductTypeOfCategory(product, productCategory)) {

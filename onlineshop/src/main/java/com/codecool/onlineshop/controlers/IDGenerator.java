@@ -1,4 +1,4 @@
-package main.java.com.codecool.onlineshop.controlers;
+package com.codecool.onlineshop.controlers;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class IDGenerator{
 
-    private List<Integer> idPool = new ArrayList<>();
+    private List<Integer> idPool = new ArrayList<Integer>();
 
     public Integer generateID() throws Exception {
         boolean generatingID = true;
