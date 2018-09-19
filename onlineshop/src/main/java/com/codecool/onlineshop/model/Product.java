@@ -7,7 +7,7 @@ import com.codecool.onlineshop.controlers.IDGenerator;
 
 public class Product {
 
-    private static List<Product> productList = new ArrayList<>();
+    private static List<Product> productList = new ArrayList<Product>();
     private String name;
     private Float defaultPrice;
     private ProductCategory productCategory;
