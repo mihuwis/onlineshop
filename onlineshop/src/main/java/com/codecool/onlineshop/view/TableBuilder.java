@@ -1,4 +1,4 @@
-package main.java.com.codecool.onlineshop.view;
+package com.codecool.onlineshop.view;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -81,10 +81,10 @@ public class TableBuilder {
                                         product.getProductPrice().toString()};
             
             for (int i=0; i<widthsOfMethods.length; i++) {
-                shapesTableBuilder.append(String.format("|  %s  ", centerString(widthsOfMethods[i], widths.get(i))));
+                productsTableBuilder.append(String.format("|  %s  ", centerString(widthsOfMethods[i], widths.get(i))));
             }
-            shapesTableBuilder.append("|\n");
+            productsTableBuilder.append("|\n");
         }
-        return shapesTableBuilder.toString();
+        return productsTableBuilder.toString();
     }
 }

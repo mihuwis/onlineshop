@@ -1,19 +1,25 @@
 package com.codecool.onlineshop.controlers;
 
+import java.util.List;
+
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.ProductCategory;
 
 public class ProductController {
     
-    private Product product = new Product();
-    private ProductParser parser = new Parser();
+    private Product product;
+    private ProductParser parser = new ProductParser("file");
 
-    public List getAllProducts() {
-        product.getAllProducts();
+    public ProductController(Product product){
+        this.product = product;
     }
 
-    public List getAllProductsBy(ProductCategory productCategory) {
-        product.getAllProductsBy(productCategory);
+    public List<Product> getAllProducts() {
+        return product.getAllProducts();
+    }
+
+    public List<Product> getAllProductsBy(ProductCategory productCategory) {
+        return product.getAllProductsBy(productCategory);
     }
 
     public void addProduct(String name, Float defaultPrice, ProductCategory productCategory) {

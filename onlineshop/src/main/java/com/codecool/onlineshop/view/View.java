@@ -1,10 +1,16 @@
 package com.codecool.onlineshop.view;
 
-import main.java.com.codecool.onlineshop.view.TableBuilder;
+import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.view.TableBuilder;
 
 public class View {
     
-    TableBuilder tableBuilder = new TableBuilder(products);
+    private Product product;
+    private TableBuilder tableBuilder = new TableBuilder(product.getAllProducts());
+
+    public View(Product product){
+        this.product = product;
+    }
 
     public enum Message {
         ASK_FOR_NAME("Enter product name: "),
