@@ -9,10 +9,6 @@ public class ProductController {
     
     private Product product = new Product();
     
-
-
-
-
     public List<Product> getAllProducts() {
         return product.getAllProducts();
     }
@@ -25,11 +21,4 @@ public class ProductController {
         Product newProduct = new Product(name, defaultPrice, productCategory);
     }
 
-    public void loadProducts() {
-
-    }
-
-    public void saveProducts() {
-
-    }
 }

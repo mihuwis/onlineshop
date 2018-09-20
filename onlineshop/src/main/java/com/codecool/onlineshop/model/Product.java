@@ -26,16 +26,11 @@ public class Product {
     }
 
 
-    private Integer generateID() throws NotBoundException {
-        try{
-            return idGenerator.generateID();
-        } catch (Exception e){
-
-            e.printStackTrace();
-        }
-        throw new NotBoundException();
+    private Integer generateID(){
+        
+        return idGenerator.generateID();
     }
-
+        
     public List<Product> getAllProducts() {
         return productList;
     }

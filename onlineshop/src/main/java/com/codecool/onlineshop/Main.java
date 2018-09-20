@@ -1,9 +1,13 @@
 package com.codecool.onlineshop;
 
+import com.codecool.onlineshop.controlers.ShopController;
+
 public class Main 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World! 2 " );
+       ShopController sControler = new ShopController();
+       sControler.printMainMenu();
+       
     }
 }

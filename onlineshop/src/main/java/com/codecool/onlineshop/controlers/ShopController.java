@@ -22,6 +22,10 @@ public class ShopController{
         order = new OrderController();
     }
 
+    public void printMainMenu(){
+        view.printMenu(Menu.MAIN_MENU);
+    }
+
     public void loadProductsFromFile(String fileName){
         parser.loadProducts();
     }
@@ -34,9 +38,9 @@ public class ShopController{
         view.printProductsTable(product.getAllProducts());
     }
 
-    public void showTableOfBasketProducts() {
-        view.printProductsTable(basket.getProducts());
-    }
+    // public void showTableOfBasketProducts() {
+    //     // view.printProductsTable(basket.getProducts());
+    // }
 
     public void newOrder(){
 
