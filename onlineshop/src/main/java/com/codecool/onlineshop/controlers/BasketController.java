@@ -11,6 +11,11 @@ public class BasketController {
     private Basket basket = new Basket();
     private Iterator<Product> productIterator = basket.getIterator();
 
+    public void createNewBasket() {
+        Basket newBasket = new Basket();
+        this.basket = newBasket;
+    }
+
     public void removeProduct(Product product) {
         basket.removeProduct(product);
     }

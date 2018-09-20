@@ -11,7 +11,8 @@ public class View {
         ASK_FOR_NAME("Enter product name: "),
         ASK_FOR_ID("Enter product ID: "),
         ASK_FOR_CATEGORY("Enter product category: "),
-        ASK_FOR_PRICE("Enter product price: ");
+        ASK_FOR_PRICE("Enter product price: "),
+        PRODUCT_NOT_FOUND("Product not found");
 
         String message;
 
@@ -25,7 +26,18 @@ public class View {
     }
 
     public enum Menu {
-        MAIN_MENU(new String[] {"Show products...", "Add new category...", "Add new product..."}, "SHOP");
+        MAIN_MENU(new String[] {"Show products...",
+                                "Add new category...",
+                                "Add new product...",
+                                "New order..."},
+                                "SHOP"),
+
+        ORDER_MENU(new String[] {"Show products...",
+                                 "Show basket...",
+                                 "Add product to the basket...",
+                                 "Remove product from the basket...",
+                                 "Checkout Order..."},
+                                 "ORDER MENU");
 
         String[] menuOptions;
         String title;
@@ -55,7 +67,6 @@ public class View {
             System.out.printf("%d. %s\n", i, productCategory.getCategoryName());
             i++;
         }
-
     }
 
     public void printMessage(Message message) {

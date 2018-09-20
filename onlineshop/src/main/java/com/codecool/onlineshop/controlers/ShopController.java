@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.ProductCategory;
 import com.codecool.onlineshop.view.View;
 import com.codecool.onlineshop.view.View.Menu;
 import com.codecool.onlineshop.view.View.Message;
+import main.java.com.codecool.onlineshop.model.Order;
+import com.codecool.onlineshop.model.Basket;
+import java.lang.Exception;
 
 public class ShopController {
 
@@ -24,7 +28,7 @@ public class ShopController {
         parser = new ProductParser(productCategoryList);
         view = new View();
         order = new OrderController();
-        setDefaultCategorys();
+        setDefaultCategories();
     }
 
     private void printMainMenu() {
@@ -47,6 +51,9 @@ public class ShopController {
             case "3":
                 createNewProduct();
                 break;
+            case "4":
+                handleNewOrder();
+                break;
             case "0":
                 saveProductsTo();
                 isRunning = false;
@@ -54,8 +61,8 @@ public class ShopController {
         }
     }
 
-    private void setDefaultCategorys() {
-        String[] categorysNames = { "Drugs", "Armor", "Weapon" };
+    private void setDefaultCategories() {
+        String[] categorysNames = {"Drugs", "Armor", "Weapon"};
         for (String name : categorysNames) {
             productCategoryList.add(new ProductCategory(name));
         }
@@ -83,12 +90,12 @@ public class ShopController {
         view.printCategoryMenu(productCategoryList);
         productCategory = productCategoryList.get(sc.nextInt() - 1);
         product.addProduct(name, defaultPrice, productCategory);
-
     }
 
     private String getUserInput() {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
+        
         userInput = sc.nextLine();
         return userInput;
     }
@@ -107,5 +114,41 @@ public class ShopController {
 
     public void showTableOfBasketProducts() {
         view.printProductsTable(basket.getProductsInBasket());
+    }
+
+    private void addProductToTheBasket() {
+        view.printMessage(Message.ASK_FOR_ID);
+        String userInput = getUserInput();
+        try {
+            Product productOfInterest = product.findProduct(userInput);
+            basket.addProduct(productOfInterest);
+            product.removeProduct(productOfInterest);
+        } catch (Exception e) {
+            view.printMessage(Message.PRODUCT_NOT_FOUND);
+        }
+    }
+
+    public void handleNewOrder() {
+        order.createNewOrder();
+        basket.createNewBasket();
+        boolean orderPending = true;
+
+        while (orderPending) {
+            view.printMenu(Menu.ORDER_MENU);
+            String userInput = getUserInput();
+            switch (userInput) {
+            case "1":
+                showTableOfProducts();
+                break;
+            case "2":
+                showTableOfBasketProducts();
+                break;
+            case "3":
+                addProductToTheBasket();
+                break;
+            case "0":
+                orderPending = false;
+            }
+        }
     }
 }
