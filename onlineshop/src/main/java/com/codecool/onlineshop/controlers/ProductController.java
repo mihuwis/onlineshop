@@ -8,7 +8,6 @@ import com.codecool.onlineshop.model.ProductCategory;
 public class ProductController {
     
     private Product product;
-    private ProductParser parser = new ProductParser("file");
 
     public ProductController(Product product){
         this.product = product;
@@ -26,11 +25,4 @@ public class ProductController {
         Product newProduct = new Product(name, defaultPrice, productCategory);
     }
 
-    public void loadProducts() {
-
-    }
-
-    public void saveProducts() {
-
-    }
 }
