@@ -2,9 +2,7 @@ package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.ProductCategory;
-
 import java.util.List;
-
 import com.codecool.onlineshop.view.TableBuilder;
 
 public class View {
@@ -27,7 +25,7 @@ public class View {
     }
 
     public enum Menu {
-        MAIN_MENU(new String[] {"Show products...", "TEMP", "Add new product"}, "SHOP");
+        MAIN_MENU(new String[] {"Show products...", "Add new category...", "Add new product..."}, "SHOP");
 
         String[] menuOptions;
         String title;
@@ -55,6 +53,7 @@ public class View {
         int i = 1;
         for (ProductCategory productCategory: productCategoryList){
             System.out.printf("%d. %s\n", i, productCategory.getCategoryName());
+            i++;
         }
 
     }

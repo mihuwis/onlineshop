@@ -42,7 +42,7 @@ public class ShopController {
                 showTableOfProducts();
                 break;
             case "2":
-                System.out.println("Out of order");
+                addNewCategory();
                 break;
             case "3":
                 createNewProduct();
@@ -59,6 +59,14 @@ public class ShopController {
         for (String name : categorysNames) {
             productCategoryList.add(new ProductCategory(name));
         }
+    }
+
+    private void addNewCategory() {
+        Scanner sc = new Scanner(System.in);
+        view.printMessage(Message.ASK_FOR_CATEGORY);
+        String newCategoryName = sc.nextLine();
+        ProductCategory newProductCategory = new ProductCategory(newCategoryName);
+        productCategoryList.add(newProductCategory);
     }
 
     private void createNewProduct() {
