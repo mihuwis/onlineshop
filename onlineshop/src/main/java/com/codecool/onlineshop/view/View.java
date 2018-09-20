@@ -1,16 +1,10 @@
 package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.view.TableBuilder;
+
+import main.java.com.codecool.onlineshop.view.TableBuilder;
 
 public class View {
-    
-    private Product product;
-    private TableBuilder tableBuilder = new TableBuilder(product.getAllProducts());
-
-    public View(Product product){
-        this.product = product;
-    }
 
     public enum Message {
         ASK_FOR_NAME("Enter product name: "),
@@ -47,7 +41,8 @@ public class View {
         }
     }
 
-    public void printProductsTable() {
+    public void printProductsTable(List<Product> products) {
+        TableBuilder tableBuilder = new TableBuilder(products);
         System.out.println(tableBuilder.getProductsTable());
     }
 
