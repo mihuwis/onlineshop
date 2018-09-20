@@ -3,6 +3,7 @@ package com.codecool.onlineshop.controlers;
 import com.codecool.onlineshop.model.FeaturedProductCategory;
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.view.View;
+import com.codecool.onlineshop.view.View.Menu;
 
 public class ShopController {
 
@@ -11,13 +12,13 @@ public class ShopController {
     private OrderController order;
     private ProductParser parser;
     private View view;
-    private String fileXML = ""; 
+    
 
 
     public ShopController(){
-        product = new ProductController(ghostProduct);
+        product = new ProductController();
         basket = new BasketController();
-        parser = new ProductParser(fileXML);
+        parser = new ProductParser();
         view = new View();
         order = new OrderController();
     }
@@ -30,14 +31,7 @@ public class ShopController {
         parser.serializeProductToFile();
     }
 
-<<<<<<< HEAD
-    public void showTableOfProducts() {
-        view.printProductsTable();
-    }
 
-    public void newOrder() {
-        order = new OrderController();
-=======
     public void showTableOfProducts(){
         view.printProductsTable(product.getAllProducts());
     }
@@ -48,7 +42,6 @@ public class ShopController {
 
     public void newOrder(){
 
->>>>>>> 16f07fcc7fc5f86c7f29de3f5e3494f074669ff1
     }
 
     public void exit() {

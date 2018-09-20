@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.controlers;
 
 import java.io.File;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,15 +22,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ProductParser{
-    String fileName;
-
-    public ProductParser(String fileName){
-        this.fileName = fileName;
-    }
+    private String fileXML = "src/main/resources/file.xml";
+    List<Product> productList = new Product().getAllProducts();
 
     public void loadProducts(){
         try {
-            File productFile = new File("src/main/resources/file.xml");
+            File productFile = new File(fileXML);
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(productFile);
@@ -77,29 +75,32 @@ public class ProductParser{
             Element products = doc.createElement("Products");
             onelineShop.appendChild(products);
 
-            Element product = doc.createElement("Product");
-            products.appendChild(product);
+            for (Product productInList: productList){
 
-            Attr id = doc.createAttribute("ID");
-            id.setValue("1");
-            product.setAttributeNode(id);
-
-            Element name = doc.createElement("Name");
-            name.appendChild(doc.createTextNode("Cocaine"));
-            product.appendChild(name);
-
-            Element price = doc.createElement("Price");
-            price.appendChild(doc.createTextNode("150,00"));
-            product.appendChild(price);
-
-            Element category = doc.createElement("Category");
-            category.appendChild(doc.createTextNode("Drugs"));
-            product.appendChild(category);
+                Element product = doc.createElement("Product");
+                products.appendChild(product);
+    
+                Attr id = doc.createAttribute("ID");
+                id.setValue(productInList.getProductId().toString());
+                product.setAttributeNode(id);
+    
+                Element name = doc.createElement("Name");
+                name.appendChild(doc.createTextNode(productInList.getCategoryName()));
+                product.appendChild(name);
+    
+                Element price = doc.createElement("Price");
+                price.appendChild(doc.createTextNode(productInList.getProductPrice().toString()));
+                product.appendChild(price);
+    
+                Element category = doc.createElement("Category");
+                category.appendChild(doc.createTextNode(productInList.getCategoryName()));
+                product.appendChild(category);
+            }
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
             Transformer transformer = tFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("src/main/resources/file.xml"));
+            StreamResult result = new StreamResult(new File(fileXML));
 
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");

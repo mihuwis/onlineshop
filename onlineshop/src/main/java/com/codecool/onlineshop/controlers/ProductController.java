@@ -7,11 +7,9 @@ import com.codecool.onlineshop.model.ProductCategory;
 
 public class ProductController {
 
-    private Product product;
+    
+    private Product product = new Product();
 
-    public ProductController(Product product) {
-        this.product = product;
-    }
 
     public List<Product> getAllProducts() {
         return product.getAllProducts();
