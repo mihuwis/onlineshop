@@ -12,7 +12,11 @@ public class ProductCategory {
 
     public ProductCategory(String name) {
         this.name = name;
+        try{
         this.ID = idGenerator.generateID();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public String getCategoryName() {

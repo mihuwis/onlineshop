@@ -8,8 +8,8 @@ public class FeaturedProductCategory extends ProductCategory {
     private Date expirationDate;
 
     public FeaturedProductCategory(String name, Date expirationDate) {
+        super();
         super.name = name;
-        super.ID = super.idGenerator.generateId();
     }
 
     public Date getExpirationDate() {

@@ -14,7 +14,8 @@ public class Product {
     private Integer ID;
     private IDGenerator idGenerator = new IDGenerator();
 
-    public Product(){}
+    public Product() {
+    }
 
     public Product(String name, Float defaultPrice, ProductCategory productCategory) {
         this.name = name;
@@ -24,10 +25,12 @@ public class Product {
         productList.add(this);
     }
 
+
     private Integer generateID() throws NotBoundException {
         try{
             return idGenerator.generateID();
         } catch (Exception e){
+
             e.printStackTrace();
         }
         throw new NotBoundException();

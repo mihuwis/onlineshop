@@ -1,15 +1,22 @@
 package com.codecool.onlineshop.model;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-public class ProductIterator implements Iterator{
+public class ProductIterator implements Iterator {
 
-    public boolean hasNext() {
-        return false;
+    private List<Product> productList = new ArrayList<Product>();
+    private int currentIndex = 0;
+
+    @Override
+    public boolean hasNext(){
+        return currentIndex < productList.size() && productList.get(currentIndex) != null;
     }
 
-    public Object next() {
-        return null;
+    @Override
+    public Object next(){
+        return productList.get(currentIndex++);
     }
 
 }
