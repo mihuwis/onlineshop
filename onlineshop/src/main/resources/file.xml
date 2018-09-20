@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OnlineShop>
+  <Products>
+    <Product ID="1">
+      <Name>Cocaine</Name>
+      <Price>150,00</Price>
+      <Category>Drugs</Category>
+    </Product>
+  </Products>
+</OnlineShop>

@@ -8,7 +8,7 @@ public class IDGenerator{
 
     private List<Integer> idPool = new ArrayList<Integer>();
 
-    public Integer generateID() throws Exception {
+    public Integer generateID() {
         boolean generatingID = true;
         Integer randomID;
         int min = 1000;
@@ -22,6 +22,6 @@ public class IDGenerator{
                 return randomID;
             }
         }
-        throw new Exception();
+        return -1;
     }
 }

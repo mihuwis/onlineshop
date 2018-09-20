@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.controlers;
 
 import com.codecool.onlineshop.model.FeaturedProductCategory;
+import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.view.View;
 
 public class ShopController{
@@ -9,26 +10,27 @@ public class ShopController{
     private BasketController basket;
     private OrderController order;
     private ProductParser parser;
+    private Product ghostProduct = new Product();
     private View view;
 
     public ShopController(String fileName){
-        product = new ProductController();
+        product = new ProductController(ghostProduct);
         basket = new BasketController();
         parser = new ProductParser(fileName);
-        view = new View();
+        view = new View(ghostProduct);
     }
 
     public void loadProductsFromFile(String fileName){
-        parser.loadProducts(fileName);
+        parser.loadProducts();
 
     }
 
     public void saveProductsTo(String fileName){
-        parser.serializeProductsToFile(fileName);
+        parser.serializeProductToFile();
     }
 
     public void showTableOfProducts(){
-        view.showTableOfProducts();
+        view.printProductsTable();
     }
 
     public void  newOrder(){

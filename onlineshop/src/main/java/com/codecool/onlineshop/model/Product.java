@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.model;
 
 import java.util.List;
+import java.rmi.NotBoundException;
 import java.util.ArrayList;
 import com.codecool.onlineshop.controlers.IDGenerator;
 
@@ -24,13 +25,15 @@ public class Product {
         productList.add(this);
     }
 
-    private Integer generateID() {
-        try {
+
+    private Integer generateID() throws NotBoundException {
+        try{
             return idGenerator.generateID();
-        } catch (Exception e) {
+        } catch (Exception e){
+
             e.printStackTrace();
         }
-        return -1;
+        throw new NotBoundException();
     }
 
     public List<Product> getAllProducts() {
@@ -50,6 +53,10 @@ public class Product {
 
     public Integer getProductId() {
         return ID;
+    }
+
+    public String getProductName() {
+        return name;
     }
 
     public Float getProductPrice() {

@@ -1,5 +1,36 @@
 package com.codecool.onlineshop.controlers;
 
-public class ProductController{
+import java.util.List;
+
+import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.model.ProductCategory;
+
+public class ProductController {
     
+    private Product product;
+    private ProductParser parser = new ProductParser("file");
+
+    public ProductController(Product product){
+        this.product = product;
+    }
+
+    public List<Product> getAllProducts() {
+        return product.getAllProducts();
+    }
+
+    public List<Product> getAllProductsBy(ProductCategory productCategory) {
+        return product.getAllProductsBy(productCategory);
+    }
+
+    public void addProduct(String name, Float defaultPrice, ProductCategory productCategory) {
+        Product newProduct = new Product(name, defaultPrice, productCategory);
+    }
+
+    public void loadProducts() {
+
+    }
+
+    public void saveProducts() {
+
+    }
 }
