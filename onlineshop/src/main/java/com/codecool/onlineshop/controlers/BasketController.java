@@ -1,35 +1,25 @@
 package com.codecool.onlineshop.controlers;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 import com.codecool.onlineshop.model.Basket;
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.model.ProductIterator;
 
 public class BasketController {
 
     private Basket basket = new Basket();
-    private List<Product> productList = new ArrayList<>();
-    ProductIterator productIterator = basket.getIterator();
+    private Iterator<Product> productIterator = basket.getIterator();
 
-    public BasketController() {
-
-        this.productList = basket.getProductList();
+    public void removeProduct(Product product) {
+        basket.removeProduct(product);
     }
 
-    public List<Product> removeProduct(Product product) {
-        productList.remove(product);
-        return productList;
+    public List<Product> getProductsInBasket() {
+        return basket.getProducts();
     }
 
-    public List<Product> getAllProductsList() {
-        return productList;
+    public void addProduct(Product product) {
+        basket.addProduct(product);
     }
-
-    public void addProduct() {
-        if (productIterator.hasNext())
-            productList.add(productIterator.next());
-    }
-
 }

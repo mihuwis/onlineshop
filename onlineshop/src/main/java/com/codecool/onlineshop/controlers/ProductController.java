@@ -7,9 +7,7 @@ import com.codecool.onlineshop.model.ProductCategory;
 
 public class ProductController {
 
-    
     private Product product = new Product();
-
 
     public List<Product> getAllProducts() {
         return product.getAllProducts();
@@ -22,5 +20,4 @@ public class ProductController {
     public void addProduct(String name, Float defaultPrice, ProductCategory productCategory) {
         Product newProduct = new Product(name, defaultPrice, productCategory);
     }
-
 }

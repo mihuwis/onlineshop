@@ -37,7 +37,7 @@ public class ShopController {
     }
 
     public void showTableOfBasketProducts() {
-        view.printProductsTable(basket.getProducts());
+        view.printProductsTable(basket.getProductsInBasket());
     }
 
     public void newOrder(){
