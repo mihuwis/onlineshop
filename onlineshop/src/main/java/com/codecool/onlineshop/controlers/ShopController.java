@@ -1,52 +1,103 @@
 package com.codecool.onlineshop.controlers;
 
-import com.codecool.onlineshop.model.FeaturedProductCategory;
-import com.codecool.onlineshop.model.Product;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.codecool.onlineshop.model.ProductCategory;
 import com.codecool.onlineshop.view.View;
 import com.codecool.onlineshop.view.View.Menu;
+import com.codecool.onlineshop.view.View.Message;
 
-public class ShopController{
-    
+public class ShopController {
+
     private ProductController product;
     private BasketController basket;
     private OrderController order;
     private ProductParser parser;
     private View view;
-    
+    private List<ProductCategory> productCategoryList = new ArrayList<>();
 
-    public ShopController(){
+    public ShopController() {
         product = new ProductController();
         basket = new BasketController();
-        parser = new ProductParser();
+        parser = new ProductParser(productCategoryList);
         view = new View();
         order = new OrderController();
+        setDefaultCategorys();
     }
 
-    public void printMainMenu(){
+    private void printMainMenu() {
         view.printMenu(Menu.MAIN_MENU);
     }
 
-    public void loadProductsFromFile(String fileName){
+    public void mainMenuHandler() {
+        boolean isRunning = true;
+        loadProductsFromFile();
+        while (isRunning) {
+            printMainMenu();
+            String userInput = getUserInput();
+            switch (userInput) {
+            case "1":
+                showTableOfProducts();
+                break;
+            case "2":
+                System.out.println("Out of order");
+                break;
+            case "3":
+                createNewProduct();
+                break;
+            case "0":
+                saveProductsTo();
+                isRunning = false;
+            }
+        }
+    }
+
+    private void setDefaultCategorys() {
+        String[] categorysNames = { "Drugs", "Armor", "Weapon" };
+        for (String name : categorysNames) {
+            productCategoryList.add(new ProductCategory(name));
+        }
+    }
+
+    private void createNewProduct() {
+        Scanner sc = new Scanner(System.in);
+        String name;
+        Float defaultPrice;
+        ProductCategory productCategory;
+
+        view.printMessage(Message.ASK_FOR_NAME);
+        name = sc.nextLine();
+        view.printMessage(Message.ASK_FOR_PRICE);
+        defaultPrice = sc.nextFloat();
+        view.printMessage(Message.ASK_FOR_CATEGORY);
+        view.printCategoryMenu(productCategoryList);
+        productCategory = productCategoryList.get(sc.nextInt() - 1);
+        product.addProduct(name, defaultPrice, productCategory);
+
+    }
+
+    private String getUserInput() {
+        Scanner sc = new Scanner(System.in);
+        String userInput = "";
+        userInput = sc.nextLine();
+        return userInput;
+    }
+
+    public void loadProductsFromFile() {
         parser.loadProducts();
     }
 
-    public void saveProductsTo(String fileName){
+    public void saveProductsTo() {
         parser.serializeProductToFile();
     }
 
-    public void showTableOfProducts(){
+    public void showTableOfProducts() {
         view.printProductsTable(product.getAllProducts());
     }
 
-    // public void showTableOfBasketProducts() {
-    //     // view.printProductsTable(basket.getProducts());
-    // }
-
-    public void newOrder(){
-
-    }
-
-    public void exit(){
-        System.exit(0);
+    public void showTableOfBasketProducts() {
+        view.printProductsTable(basket.getProductsInBasket());
     }
 }

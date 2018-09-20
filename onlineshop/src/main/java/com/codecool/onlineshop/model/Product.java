@@ -25,9 +25,16 @@ public class Product {
         productList.add(this);
     }
 
+    public Product(Integer ID, String name, Float defaultPrice, ProductCategory productCategory) {
+        this.name = name;
+        this.defaultPrice = defaultPrice;
+        this.productCategory = productCategory;
+        this.ID = ID;
+        productList.add(this);
+    }
 
-    private Integer generateID(){
-        
+
+    private Integer generateID()  {
         return idGenerator.generateID();
     }
         
@@ -53,7 +60,7 @@ public class Product {
     public String getProductName() {
         return name;
     }
-
+    
     public Float getProductPrice() {
         return defaultPrice;
     }

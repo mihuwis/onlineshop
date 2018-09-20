@@ -7,7 +7,7 @@ public class Main
     public static void main( String[] args )
     {
        ShopController sControler = new ShopController();
-       sControler.printMainMenu();
-       
+       sControler.mainMenuHandler();
+
     }
 }

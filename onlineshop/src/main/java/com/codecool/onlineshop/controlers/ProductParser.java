@@ -14,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.model.ProductCategory;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -24,6 +25,11 @@ import org.w3c.dom.NodeList;
 public class ProductParser{
     private String fileXML = "src/main/resources/file.xml";
     List<Product> productList = new Product().getAllProducts();
+    List<ProductCategory> productCategoriesList;
+    
+    public ProductParser(List<ProductCategory> productCategoriesList) {
+        this.productCategoriesList = productCategoriesList;
+    }
 
     public void loadProducts(){
         try {
@@ -45,12 +51,21 @@ public class ProductParser{
                 if (nNode.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) nNode;
 
-                    String id = eElement.getAttribute("ID");
+                    String idString = eElement.getAttribute("ID");
+                    Integer id = Integer.parseInt(idString);
                     String productName = eElement.getElementsByTagName("Name").item(0).getTextContent();
-                    String price = eElement.getElementsByTagName("Price").item(0).getTextContent();
-                    String category = eElement.getElementsByTagName("Category").item(0).getTextContent();
+                    String priceString = eElement.getElementsByTagName("Price").item(0).getTextContent();
+                    Float price = Float.parseFloat(priceString);
+                    String categoryString = eElement.getElementsByTagName("Category").item(0).getTextContent();
+                    ProductCategory category = null;
 
-                    System.out.println(id + productName + price + category);
+                    for (ProductCategory productCategory : productCategoriesList) {
+                        if (productCategory.getCategoryName().equals(categoryString)) {
+                            category = productCategory;
+                        }
+                    }
+
+                    Product product = new Product(id, productName, price, category);
                 }
             }
 
@@ -85,7 +100,7 @@ public class ProductParser{
                 product.setAttributeNode(id);
     
                 Element name = doc.createElement("Name");
-                name.appendChild(doc.createTextNode(productInList.getCategoryName()));
+                name.appendChild(doc.createTextNode(productInList.getProductName()));
                 product.appendChild(name);
     
                 Element price = doc.createElement("Price");
