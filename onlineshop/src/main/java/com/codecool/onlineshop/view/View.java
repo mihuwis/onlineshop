@@ -1,8 +1,9 @@
 package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.model.Product;
+import java.util.List;
 
-import main.java.com.codecool.onlineshop.view.TableBuilder;
+import com.codecool.onlineshop.view.TableBuilder;
 
 public class View {
 

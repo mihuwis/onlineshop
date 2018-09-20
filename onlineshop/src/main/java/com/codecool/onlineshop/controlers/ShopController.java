@@ -3,6 +3,7 @@ package com.codecool.onlineshop.controlers;
 import com.codecool.onlineshop.model.FeaturedProductCategory;
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.view.View;
+import com.codecool.onlineshop.view.View.Menu;
 
 public class ShopController{
     
@@ -11,12 +12,12 @@ public class ShopController{
     private OrderController order;
     private ProductParser parser;
     private View view;
-    private String fileXML = ""; 
+    
 
     public ShopController(){
-        product = new ProductController(ghostProduct);
+        product = new ProductController();
         basket = new BasketController();
-        parser = new ProductParser(fileXML);
+        parser = new ProductParser();
         view = new View();
         order = new OrderController();
     }
