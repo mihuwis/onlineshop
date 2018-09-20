@@ -10,7 +10,6 @@ public class ShopController{
     private BasketController basket;
     private OrderController order;
     private ProductParser parser;
-    private Product ghostProduct = new Product();
     private View view;
     private String fileXML = ""; 
 
@@ -31,7 +30,7 @@ public class ShopController{
     }
 
     public void showTableOfProducts(){
-        view.printProductsTable(ghostProduct.getAllProducts());
+        view.printProductsTable(product.getAllProducts());
     }
 
     public void showTableOfBasketProducts() {
