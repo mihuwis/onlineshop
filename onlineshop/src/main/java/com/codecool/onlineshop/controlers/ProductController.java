@@ -6,10 +6,10 @@ import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.ProductCategory;
 
 public class ProductController {
-    
+
     private Product product;
 
-    public ProductController(Product product){
+    public ProductController(Product product) {
         this.product = product;
     }
 

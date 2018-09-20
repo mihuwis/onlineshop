@@ -10,12 +10,12 @@ public class ProductIterator implements Iterator {
     private int currentIndex = 0;
 
     @Override
-    public boolean hasNext(){
+    public boolean hasNext() {
         return currentIndex < productList.size() && productList.get(currentIndex) != null;
     }
 
     @Override
-    public Object next(){
+    public Product next() {
         return productList.get(currentIndex++);
     }
 
