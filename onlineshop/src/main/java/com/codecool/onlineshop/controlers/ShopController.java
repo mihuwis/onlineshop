@@ -10,14 +10,16 @@ public class ShopController {
     private BasketController basket;
     private OrderController order;
     private ProductParser parser;
-    private Product ghostProduct = new Product();
     private View view;
+    private String fileXML = ""; 
 
-    public ShopController(String fileName) {
+
+    public ShopController(){
         product = new ProductController(ghostProduct);
         basket = new BasketController();
-        parser = new ProductParser(fileName);
-        view = new View(ghostProduct);
+        parser = new ProductParser(fileXML);
+        view = new View();
+        order = new OrderController();
     }
 
     public void loadProductsFromFile(String fileName) {
@@ -28,12 +30,25 @@ public class ShopController {
         parser.serializeProductToFile();
     }
 
+<<<<<<< HEAD
     public void showTableOfProducts() {
         view.printProductsTable();
     }
 
     public void newOrder() {
         order = new OrderController();
+=======
+    public void showTableOfProducts(){
+        view.printProductsTable(product.getAllProducts());
+    }
+
+    public void showTableOfBasketProducts() {
+        view.printProductsTable(basket.getProducts());
+    }
+
+    public void newOrder(){
+
+>>>>>>> 16f07fcc7fc5f86c7f29de3f5e3494f074669ff1
     }
 
     public void exit() {

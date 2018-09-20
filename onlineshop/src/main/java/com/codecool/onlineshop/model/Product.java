@@ -55,7 +55,7 @@ public class Product {
     public String getProductName() {
         return name;
     }
-
+    
     public Float getProductPrice() {
         return defaultPrice;
     }

@@ -24,7 +24,7 @@ public class ProductParser{
     String fileName;
 
     public ProductParser(String fileName){
-
+        this.fileName = fileName;
     }
 
     public void loadProducts(){
@@ -54,9 +54,6 @@ public class ProductParser{
 
                     System.out.println(id + productName + price + category);
                 }
-
-
-
             }
 
         } catch (Exception err) {
@@ -108,9 +105,6 @@ public class ProductParser{
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             transformer.transform(source, result);
 
-
-
-
         } catch (ParserConfigurationException pce){
             pce.printStackTrace();
 
@@ -118,5 +112,4 @@ public class ProductParser{
             tfe.printStackTrace();
         }
     }
-
 }
