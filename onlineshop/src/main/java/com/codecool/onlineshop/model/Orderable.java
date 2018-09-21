@@ -1,4 +1,4 @@
-package main.java.com.codecool.onlineshop.model;
+package com.codecool.onlineshop.model;
 
 public interface Orderable {
 

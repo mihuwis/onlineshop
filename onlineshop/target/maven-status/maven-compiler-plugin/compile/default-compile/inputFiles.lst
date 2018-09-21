@@ -11,4 +11,6 @@
 /home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/view/TableBuilder.java
 /home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/controlers/ProductController.java
 /home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/controlers/ProductParser.java
+/home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/model/Orderable.java
 /home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/model/Basket.java
+/home/mihu/codecool/JAVA/onlineshop/onlineshop/onlineshop/src/main/java/com/codecool/onlineshop/model/Order.java

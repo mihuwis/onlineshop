@@ -9,7 +9,7 @@ import com.codecool.onlineshop.model.ProductCategory;
 import com.codecool.onlineshop.view.View;
 import com.codecool.onlineshop.view.View.Menu;
 import com.codecool.onlineshop.view.View.Message;
-import main.java.com.codecool.onlineshop.model.Order;
+import com.codecool.onlineshop.model.Order;
 import com.codecool.onlineshop.model.Basket;
 import java.lang.Exception;
 
