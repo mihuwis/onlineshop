@@ -21,4 +21,9 @@ public class ProductIterator implements Iterator<Product> {
     public Product next() {
         return productList.get(currentIndex++);
     }
+
+    @Override
+    public void remove() {
+        productList.remove(currentIndex-1);
+    }
 }

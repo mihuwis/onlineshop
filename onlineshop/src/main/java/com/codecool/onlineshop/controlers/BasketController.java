@@ -9,7 +9,6 @@ import com.codecool.onlineshop.model.Product;
 public class BasketController {
 
     private Basket basket = new Basket();
-    private Iterator<Product> productIterator = basket.getIterator();
 
     public void createNewBasket() {
         Basket newBasket = new Basket();
@@ -26,5 +25,9 @@ public class BasketController {
 
     public void addProduct(Product product) {
         basket.addProduct(product);
+    }
+
+    public Iterator<Product> getProductIterator() {
+        return basket.getIterator();
     }
 }

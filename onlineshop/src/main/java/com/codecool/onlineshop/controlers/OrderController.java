@@ -1,8 +1,7 @@
 package com.codecool.onlineshop.controlers;
 
+import com.codecool.onlineshop.model.Order;
 import java.util.List;
-
-import main.java.com.codecool.onlineshop.model.Order;
 import java.util.ArrayList;
 
 public class OrderController{
