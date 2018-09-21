@@ -12,7 +12,8 @@ public class View {
         ASK_FOR_ID("Enter product ID: "),
         ASK_FOR_CATEGORY("Enter product category: "),
         ASK_FOR_PRICE("Enter product price: "),
-        PRODUCT_NOT_FOUND("Product not found");
+        PRODUCT_NOT_FOUND("Product not found"),
+        STATUS_PENDING("Pending");
 
         String message;
 

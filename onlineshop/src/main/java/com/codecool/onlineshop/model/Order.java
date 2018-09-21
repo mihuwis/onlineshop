@@ -16,7 +16,7 @@ public class Order implements Orderable{
         return status;
     }
 
-    private void setStatus(String newStatus) {
+    public void setStatus(String newStatus) {
         this.status = newStatus;
     }
 

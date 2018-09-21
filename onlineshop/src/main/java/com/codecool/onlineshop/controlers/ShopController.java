@@ -95,7 +95,7 @@ public class ShopController {
     private String getUserInput() {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
-        
+
         userInput = sc.nextLine();
         return userInput;
     }
@@ -128,6 +128,11 @@ public class ShopController {
         }
     }
 
+    private void checkoutOrder() {
+        Order checkoutOrder = order.getLastOrder();
+        checkoutOrder.setStatus("WAITING FOR PAYMENT");
+    }
+
     public void handleNewOrder() {
         order.createNewOrder();
         basket.createNewBasket();
@@ -146,7 +151,12 @@ public class ShopController {
             case "3":
                 addProductToTheBasket();
                 break;
+            case "5":
+                checkoutOrder();
+                orderPending = false;
+                break;
             case "0":
+                order.removeLastOrder();
                 orderPending = false;
             }
         }
