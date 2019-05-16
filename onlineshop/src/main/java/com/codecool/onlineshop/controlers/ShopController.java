@@ -137,7 +137,7 @@ public class ShopController {
         String productID = getUserInput();
         Iterator<Product> productIterator = basket.getProductIterator();
         while (productIterator.hasNext()) {
-            if (productIterator.next().getProductCategoryId().toString().equals(productID)) {
+            if (productIterator.next().getProductId().toString().equals(productID)) {
                 productIterator.remove();
             }
         }
