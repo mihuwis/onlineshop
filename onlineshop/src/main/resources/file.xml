@@ -46,5 +46,10 @@
       <Price>10.0</Price>
       <Category>Drugs</Category>
     </Product>
+    <Product ID="1709">
+      <Name>Knife</Name>
+      <Price>120.0</Price>
+      <Category>Weapon</Category>
+    </Product>
   </Products>
 </OnlineShop>

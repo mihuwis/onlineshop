@@ -39,7 +39,7 @@ public class ProductParser{
             Document doc = docBuilder.parse(productFile);
 
             doc.getDocumentElement().normalize();
-
+            
             String shopElement = doc.getDocumentElement().getNodeName();
 
             NodeList productsList = doc.getElementsByTagName("Products");
