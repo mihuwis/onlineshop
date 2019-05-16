@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OnlineShop>
+  <Products>
+    <Product ID="1714">
+      <Name>FN-RAL12</Name>
+      <Price>123.0</Price>
+      <Category>Weapon</Category>
+    </Product>
+    <Product ID="9253">
+      <Name>Psycho</Name>
+      <Price>2.0</Price>
+      <Category>Drugs</Category>
+    </Product>
+    <Product ID="9652">
+      <Name>Stimpack</Name>
+      <Price>3.0</Price>
+      <Category>Drugs</Category>
+    </Product>
+    <Product ID="9730">
+      <Name>Minigun</Name>
+      <Price>3800.0</Price>
+      <Category>Weapon</Category>
+    </Product>
+    <Product ID="3361">
+      <Name>Rocket Launcher</Name>
+      <Price>2300.0</Price>
+      <Category>Weapon</Category>
+    </Product>
+    <Product ID="4531">
+      <Name>Tesla Armor</Name>
+      <Price>4200.0</Price>
+      <Category>Armor</Category>
+    </Product>
+    <Product ID="9515">
+      <Name>Leather Jacket</Name>
+      <Price>300.0</Price>
+      <Category>Armor</Category>
+    </Product>
+    <Product ID="3675">
+      <Name>Power Armour</Name>
+      <Price>12500.0</Price>
+      <Category>Armor</Category>
+    </Product>
+    <Product ID="9456">
+      <Name>Booze</Name>
+      <Price>10.0</Price>
+      <Category>Drugs</Category>
+    </Product>
+    <Product ID="1709">
+      <Name>Knife</Name>
+      <Price>120.0</Price>
+      <Category>Weapon</Category>
+    </Product>
+  </Products>
+</OnlineShop>
