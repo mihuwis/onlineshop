@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.ProductCategory;
+import com.codecool.onlineshop.services.ShopControllerServices;
 import com.codecool.onlineshop.view.View;
 import com.codecool.onlineshop.view.View.Menu;
 import com.codecool.onlineshop.view.View.Message;
@@ -17,34 +18,29 @@ import java.lang.Exception;
 public class ShopController {
 
     private ProductController product;
+    private ShopControllerServices shopControllerServices;
     private BasketController basket;
     private OrderController order;
     private ProductParser parser;
     private View view;
-    private List<ProductCategory> productCategoryList = new ArrayList<>();
+    private List<ProductCategory> productCategoryList;
 
     public ShopController() {
-        product = new ProductController();
-        basket = new BasketController();
-        parser = new ProductParser(productCategoryList);
-        view = new View();
-        order = new OrderController();
+        this.shopControllerServices = new ShopControllerServices();
+        this.productCategoryList  = new ArrayList<>();
+        this.product = new ProductController();
+        this.basket = new BasketController();
+        this.parser = new ProductParser(productCategoryList);
+        this.view = new View();
+        this.order = new OrderController();
         setDefaultCategories();
-    }
-
-    private void printMainMenu() {
-        view.printMenu(Menu.MAIN_MENU);
-    }
-
-    private void printOrderMenu() {
-        view.printMenu(Menu.ORDER_MENU);
     }
 
     public void mainMenuHandler() {
         boolean isRunning = true;
         loadProductsFromFile();
         while (isRunning) {
-            printMainMenu();
+            shopControllerServices.printMainMenu();
             String userInput = getUserInput();
             switch (userInput) {
             case "1":
@@ -65,6 +61,8 @@ public class ShopController {
             }
         }
     }
+
+
 
     private void setDefaultCategories() {
         String[] categorysNames = {"Drugs", "Armor", "Weapon"};
@@ -160,7 +158,7 @@ public class ShopController {
         boolean orderPending = true;
 
         while (orderPending) {
-            printOrderMenu();
+            shopControllerServices.printOrderMenu();
             String userInput = getUserInput();
             switch (userInput) {
             case "1":
